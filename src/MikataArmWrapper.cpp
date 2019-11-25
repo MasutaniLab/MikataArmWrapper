@@ -354,7 +354,7 @@ RTC::ReturnCode_t MikataArmWrapper::onExecute(RTC::UniqueId ec_id)
             if (m_moving.data[i] == 1) {
                 moving = true;
             }
-            else if (m_moving.data[i] == 3) {
+            else if (m_moving.data[i] > 1) { //bit1ˆÈã‚ÉƒGƒ‰[‚ªŠ„‚è“–‚Ä‚ç‚ê‚Ä‚¢‚é
                 error = true;
             }
         }

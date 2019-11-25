@@ -35,7 +35,7 @@
   - 概要： Dynamixel RTCから受け取る各アクチュエータの現在角度 [XM430の内部表現]
 - moving
   - 型: RTC::TimedUShortSeq（要素数5）
-  - 概要： Dynamixel RTCから受け取る各アクチュエータの状態．0: 停止中，1: 動作中
+  - 概要： Dynamixel RTCから受け取る各アクチュエータの状態．0: 停止中，1: 動作中，>1: エラー
 
 ### 出力ポート
 - armTip
