@@ -1,0 +1,54 @@
+# MikataArmWrapper CMake config file
+#
+# This file sets the following variables:
+# MikataArmWrapper_FOUND - Always TRUE.
+# MikataArmWrapper_INCLUDE_DIRS - Directories containing the MikataArmWrapper include files.
+# MikataArmWrapper_IDL_DIRS - Directories containing the MikataArmWrapper IDL files.
+# MikataArmWrapper_LIBRARIES - Libraries needed to use MikataArmWrapper.
+# MikataArmWrapper_DEFINITIONS - Compiler flags for MikataArmWrapper.
+# MikataArmWrapper_VERSION - The version of MikataArmWrapper found.
+# MikataArmWrapper_VERSION_MAJOR - The major version of MikataArmWrapper found.
+# MikataArmWrapper_VERSION_MINOR - The minor version of MikataArmWrapper found.
+# MikataArmWrapper_VERSION_REVISION - The revision version of MikataArmWrapper found.
+# MikataArmWrapper_VERSION_CANDIDATE - The candidate version of MikataArmWrapper found.
+
+message(STATUS "Found MikataArmWrapper-@PROJECT_VERSION@")
+set(MikataArmWrapper_FOUND TRUE)
+
+find_package(<dependency> REQUIRED)
+
+#set(MikataArmWrapper_INCLUDE_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@"
+#    ${<dependency>_INCLUDE_DIRS}
+#    )
+#
+#set(MikataArmWrapper_IDL_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@/idl")
+set(MikataArmWrapper_INCLUDE_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@"
+    ${<dependency>_INCLUDE_DIRS}
+    )
+set(MikataArmWrapper_IDL_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@/idl")
+
+
+if(WIN32)
+    set(MikataArmWrapper_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_STATIC_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+else(WIN32)
+    set(MikataArmWrapper_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_SHARED_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+endif(WIN32)
+
+set(MikataArmWrapper_DEFINITIONS ${<dependency>_DEFINITIONS})
+
+set(MikataArmWrapper_VERSION @PROJECT_VERSION@)
+set(MikataArmWrapper_VERSION_MAJOR @PROJECT_VERSION_MAJOR@)
+set(MikataArmWrapper_VERSION_MINOR @PROJECT_VERSION_MINOR@)
+set(MikataArmWrapper_VERSION_REVISION @PROJECT_VERSION_REVISION@)
+set(MikataArmWrapper_VERSION_CANDIDATE @PROJECT_VERSION_CANDIDATE@)
+
